@@ -10,5 +10,4 @@ alias opcs='opcase.sh'
 
 2. Run the commnads; `$ source ~/.bash_profile`
 
-
 # How to use
