@@ -1,15 +1,20 @@
 #!/bin/bash
 
 date=$(date +"%Y%m%d")
-filename=$date-$1-$2.txt #$1 -> number, #$2 -> field
+txtfile=$date-$1-$2.txt #$1 -> number, #$2 -> field
+markdownfile=$date-$1-$2.md
 
 if [ -z "$1" -o -z "$2" ]; then #$1, $2がnullの場合
-  echo "\$ mkcs [number] [field]"
+  echo "Usage: \$ mkcs [number] [field] [option]"
+  echo "[option] default: GitMarkdown, -txt: make text file"
   exit 1
-elif [ -e "$filename" ]; then
-  echo "$filename already exists."
+elif [ -e "$txtfile" ]; then
+  echo "$txtfile already exists."
   exit 1
+elif [ "$3"=~"\-txt" ]; then
+  echo "Make new file $txtfile"
+  `atom $txtfile`
 else
-  echo "Make new file $filename"
-  `atom $filename`
+  echo "Make new file $markdownfile"
+  `atom $markdownfile`
 fi
